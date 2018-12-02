@@ -10,22 +10,29 @@ using namespace System::Collections;
 
 extern "C"
 {
-	void __declspec(dllexport) __stdcall Test()
+	void __declspec(dllexport) TestTextOutput()
 	{
-		Console::WriteLine("TEST");
+		Console::WriteLine("Testing console output");
+		Console::WriteLine("Test message");
+		Console::WriteLine("End testing console output");
 	}
 
-	void __declspec(dllexport) DrawPicture(wchar_t* path, int x, int y, int width, int heigth)
+	void __declspec(dllexport) TestTextOutputStr(wchar_t* text)
 	{
-		//Console::WriteLine("Before call PictureWriter::DrawAPicture");
-		ConsoleDrawingLib::PictureWriter::DrawAPicture(gcnew System::String(path), x, y, width, heigth);
-		//Console::WriteLine("After call PictureWriter::DrawAPicture");
+		Console::WriteLine("Testing console output");
+		Console::WriteLine(gcnew System::String(text));
+		Console::WriteLine("End testing console output");
 	}
 
-	void __declspec(dllexport) DrawPictureC(const wchar_t* path, int x, int y, int width, int heigth)
+	void __declspec(dllexport) __stdcall DrawPictureDebug(wchar_t* path, int x, int y, int width, int heigth)
 	{
-		//Console::WriteLine("Before call PictureWriter::DrawAPicture");
+		Console::WriteLine("Before call PictureWriter::DrawAPicture");
 		ConsoleDrawingLib::PictureWriter::DrawAPicture(gcnew System::String(path), x, y, width, heigth);
-		//Console::WriteLine("After call PictureWriter::DrawAPicture");
+		Console::WriteLine("After call PictureWriter::DrawAPicture");
+	}
+
+	void __declspec(dllexport) DrawPicture(const wchar_t* path, int x, int y, int width, int heigth)
+	{
+		ConsoleDrawingLib::PictureWriter::DrawAPicture(gcnew System::String(path), x, y, width, heigth);
 	}
 }
