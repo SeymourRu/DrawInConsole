@@ -24,7 +24,7 @@ extern "C"
 		Console::WriteLine("End testing console output");
 	}
 
-	void __declspec(dllexport) __stdcall DrawPictureDebug(wchar_t* path, int x, int y, int width, int heigth)
+	void __declspec(dllexport) DrawPictureDebug(wchar_t* path, int x, int y, int width, int heigth)
 	{
 		Console::WriteLine("Before call PictureWriter::DrawAPicture");
 		ConsoleDrawingLib::PictureWriter::DrawAPicture(gcnew System::String(path), x, y, width, heigth);
